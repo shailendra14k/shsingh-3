@@ -15,6 +15,10 @@
     from:
       uri: "kafka:{{topicName.json}}?groupId={{consumergroup}}"
       steps:
+        - unmarshal:
+            json: {}
+        - setBody:
+            simple: "${body[payload][after]}"
         - log:
             id: log-223
             message: "${body}"
