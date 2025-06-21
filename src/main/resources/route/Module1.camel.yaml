@@ -9,3 +9,12 @@
         - log:
             id: log-9575
             message: "${body}"
+
+- route:
+    id: "api3"
+    from:
+      uri: "kafka:{{topicName.json}}?groupId={{consumergroup}}"
+      steps:
+        - log:
+            id: log-9575
+            message: "${body}"
