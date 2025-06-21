@@ -5,7 +5,7 @@
       uri: rest:get:/demo
       steps:
         - setBody:
-            simple: 'Hello World'
+            simple: 'Hello World1'
         - log:
             id: log-9575
             message: "${body}"
