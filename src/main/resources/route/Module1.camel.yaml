@@ -7,7 +7,7 @@
         - setBody:
             simple: 'Hello World1'
         - log:
-            id: log-9575
+            id: log-95
             message: "${body}"
 
 - route:
@@ -16,5 +16,5 @@
       uri: "kafka:{{topicName.json}}?groupId={{consumergroup}}"
       steps:
         - log:
-            id: log-9575
+            id: log-223
             message: "${body}"
