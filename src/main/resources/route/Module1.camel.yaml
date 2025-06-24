@@ -6,7 +6,7 @@
         - unmarshal:
             json: {}
         - setBody:
-            simple: ${body[payload][after]}
+            simple: ${body[payload][after][email]}
         - log:
             id: log-223
             message: ${body}
