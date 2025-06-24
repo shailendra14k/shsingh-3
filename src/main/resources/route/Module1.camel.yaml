@@ -1,24 +1,12 @@
 - route:
-    id: route-5711
+    id: api3
     from:
-      id: from-3753
-      uri: rest:get:/demo
-      steps:
-        - setBody:
-            simple: 'Hello World1'
-        - log:
-            id: log-95
-            message: "${body}"
-
-- route:
-    id: "api3"
-    from:
-      uri: "kafka:{{topicName.json}}?groupId={{consumergroup}}"
+      uri: kafka:{{topicName.json}}?groupId={{consumergroup}}
       steps:
         - unmarshal:
             json: {}
         - setBody:
-            simple: "${body[payload][after]}"
+            simple: ${body[payload][after][email]}
         - log:
             id: log-223
-            message: "${body}"
+            message: ${body}
