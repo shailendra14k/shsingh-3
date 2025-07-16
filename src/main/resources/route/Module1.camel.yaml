@@ -12,7 +12,7 @@
             message: ${body}
 
 - from:
-    uri: "timer:myTimer?period=200"
+    uri: "timer:myTimer?period=100"
     id: "timer-sequence-to-kafka"
     steps:
       - choice:
