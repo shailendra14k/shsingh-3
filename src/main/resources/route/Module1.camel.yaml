@@ -10,3 +10,27 @@
         - log:
             id: log-223
             message: ${body}
+
+- from:
+    uri: "timer:myTimer?period=5000"
+    id: "timer-sequence-to-kafka"
+    steps:
+      - choice:
+          when:
+            # A 'when' clause is a list item
+            - simple: "${exchangeProperty.counter} == null"
+              steps:
+                - setProperty:
+                    name: "counter"
+                    constant: "1"
+          # 'otherwise' is NOT a list item. It is a direct child of 'choice'.
+          otherwise:
+            steps:
+              - setProperty:
+                  name: "counter"
+                  simple: "${exchangeProperty.counter} + 1"
+      - setBody:
+          simple: "user${exchangeProperty.counter}@example.com"
+      - to: "kafka:test-yono2"
+      - log:
+          message: "Sent to Kafka: ${body}"
