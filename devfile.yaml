@@ -22,4 +22,4 @@ components:
     name: tools
   - name: m2
     volume:
-      size: 1G
+      size: 50G
